@@ -12,9 +12,8 @@ Nessa atividade,vamos evoluir o projeto para que a home-page funcione bem tanto 
 - Nome:Pedro Henrique Faria Godinho
 - Matricula:1658056
 - Proposta de projeto escolhida:Loja de Informatica/ Proposta 4
-- Breve descrição sobre seu projeto:Este projeto consiste na criação de uma página web utilizando HTML e CSS para apresentar produtos de informática. O site simula uma loja virtual chamada FG Computadores, exibindo itens como processadores, placas de vídeo, memória RAM e gabinetes.
+- Breve descrição sobre seu projeto:Este projeto consiste na criação de uma página web utilizando HTML e CSS para apresentar produtos de informática. Nesta versão (v2.0), foi utilizado o Bootstrap para criar um layout responsivo com cards de produtos, formulário de contato e menu de navegação, garantindo adaptação a diferentes tamanhos de tela.
 
-A página foi estruturada com HTML semântico e estilizada com CSS, utilizando Flexbox para alinhar os elementos e organizar o layout de forma clara e responsiva. Também foi incluído um formulário simples para contato.
 ## Print do Wireframe criado
 
 ![Wireframe](.public/Wireframe.png)
@@ -34,3 +33,11 @@ A página foi estruturada com HTML semântico e estilizada com CSS, utilizando F
 ## Print da versão responsiva Desktop
 
 ![Desktop](./public/desktop.png)
+
+## Print da versão responsiva Mobile com o Bootstrap
+
+![Mobile](./public/celularboot.png)
+
+## Print da versão responsiva Desktop com o Bootstrap
+
+![Desktop](./public/desktopboot.png)
