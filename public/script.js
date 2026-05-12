@@ -122,8 +122,8 @@ function createProductCard(produto) {
   const card = col.querySelector(".card");
 
   col.querySelector(".btn-details").addEventListener("click", () => {
-    showProductDetails(produto);
-  });
+    window.location.href = `detalhes.html?id=${produto.id}`;
+});
 
   col.querySelector(".btn-highlight").addEventListener("click", () => {
     card.classList.toggle("border");
