@@ -1,11 +1,9 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=23198166)
-# Trabalho Prático - Semana 9
+# Trabalho Prático - Semana 11
 
-Nesta atividade, você vai montar um programa para praticar funções em JavaScript e a manipulação do DOM, criando uma tela simples no estilo eCommerce que lista produtos em cards a partir de um objeto JSON (array de produtos).
+Nesse trabalho, vamos montar a primeira versão mais completa do nosso projeto, conforme projeto que você escolheu. O site deve ser totalmente responsivo, adaptável a desktops e celulares, e apresentar informações montadas de forma dinâmica a partir de código JavaScript e uma estrutura JSON.
 
-Você vai usar métodos e propriedades do document e seus nodos para criar elementos, definir atributos, alterar conteúdo, estilizar e registrar eventos.
-
-A atividade foi pensada para ser concluída em até 1h no laboratório, usando Visual Studio Code e um navegador (DevTools/Console).
+No projeto desse trabalho, você deverá montar duas telas distintas, conforme wireframes fornecidos na imagem a seguir.  Tal como na atividade prática anterior, ao clicar em um item (entidade principal), você é direcionado pra a página de detalhe (dados da entidade secundária). A página de detalhe vai mostrar todas as informações sobre o item do seu projeto com fotos associadas ao item.
 
 **IMPORTANTE:** Você deve trabalhar e alterar apenas arquivos dentro da pasta **`public`,** mantendo os arquivos **`index.html`** , **`styles.css`** e **`script.js`** com estes nomes. Deixe todos os demais arquivos e pastas desse repositório inalterados. **PRESTE MUITA ATENÇÃO NISSO.**
 
@@ -14,7 +12,7 @@ A atividade foi pensada para ser concluída em até 1h no laboratório, usando V
 - Nome:Pedro Henrique Faria Godinho
 - Matricula:1658056
 - Proposta de projeto escolhida:Loja de Informatica/ Proposta 4
-- Breve descrição sobre seu projeto:Este projeto consiste na criação de uma página web utilizando HTML e CSS para apresentar produtos de informática. Nesta versão (v4.0), foi desenvolvido um mini e-commerce em JavaScript que exibe produtos em cards a partir de um JSON, com busca, filtro por categoria, visualização de detalhes e destaque, utilizando manipulação do DOM e eventos.
+- Breve descrição sobre seu projeto:Neste projeto foi desenvolvido um catálogo de produtos de informática utilizando HTML, CSS, Bootstrap e JavaScript. Foi criada uma página principal com cards de produtos e uma página de detalhes que exibe informações completas do item selecionado, como imagem, preço, categoria, descrição e status de estoque. Também foi implementada a navegação entre páginas através de parâmetros na URL, permitindo abrir os detalhes do produto em uma nova aba.
 
 ## Print do Wireframe criado
 
