@@ -1,6 +1,7 @@
 // =======================
 // BASE DE DADOS (JSON)
 // =======================
+
 const data = {
   produtos: [
     {
@@ -79,76 +80,109 @@ const data = {
 };
 
 // =======================
-// ELEMENTOS DOM
+// DOM
 // =======================
+
 const lista = document.getElementById("product-list");
-const detalhes = document.getElementById("product-details");
-const searchInput = document.querySelector("#search");
-const categorySelect = document.querySelector("#category");
+const carousel = document.getElementById("carousel-content");
+const searchInput = document.getElementById("search");
+const categorySelect = document.getElementById("category");
 const btnRender = document.getElementById("btnRender");
 
 // =======================
 // FUNÇÕES
 // =======================
+
 function formatPrice(preco) {
   return "R$ " + preco.toFixed(2);
 }
 
-function createProductCard(produto) {
-  const col = document.createElement("div");
+function renderCarousel() {
 
-  col.classList.add("col-12", "col-md-6", "col-lg-3");
-  col.setAttribute("data-id", produto.id); // ✔ obrigatório
-  col.style.transition = "0.3s"; // ✔ obrigatório
+  carousel.innerHTML = "";
 
-  col.innerHTML = `
-    <div class="card h-100">
-      <img src="${produto.imagem}" 
-           class="card-img-top" 
-           style="height:200px; object-fit:cover;"
-           onerror="this.src='https://via.placeholder.com/300x200?text=Sem+Imagem'">
+  const destaques = data.produtos.filter(p => p.destaque);
 
-      <div class="card-body text-center">
-        <h5>${produto.nome}</h5>
-        <p class="fw-bold">${formatPrice(produto.preco)}</p>
-        <p>${produto.categoria}</p>
+  destaques.forEach((produto, index) => {
 
-        <button class="btn btn-primary btn-details">Ver detalhes</button>
-        <button class="btn btn-warning btn-highlight">Destacar</button>
+    carousel.innerHTML += `
+      <div class="carousel-item ${index === 0 ? "active" : ""}">
+        
+        <div class="card border-0 text-center shadow p-4">
+
+          <img src="${produto.imagem}"
+               class="img-fluid mx-auto"
+               style="max-height:350px; object-fit:contain;">
+
+          <div class="card-body">
+
+            <h3>${produto.nome}</h3>
+
+            <p>${produto.descricao}</p>
+
+            <p class="fw-bold text-primary fs-4">
+              ${formatPrice(produto.preco)}
+            </p>
+
+            <button class="btn btn-primary"
+              onclick="window.location.href='detalhes.html?id=${produto.id}'">
+              Ver detalhes
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
+    `;
+  });
+}
+
+function createProductCard(produto) {
+
+  return `
+    <div class="col-12 col-md-6 col-lg-3">
+
+      <div class="card h-100 shadow">
+
+        <img src="${produto.imagem}"
+          class="card-img-top"
+          style="height:200px; object-fit:cover;">
+
+        <div class="card-body text-center">
+
+          <h5>${produto.nome}</h5>
+
+          <p class="fw-bold text-primary">
+            ${formatPrice(produto.preco)}
+          </p>
+
+          <p>${produto.categoria}</p>
+
+          <button class="btn btn-primary"
+            onclick="window.location.href='detalhes.html?id=${produto.id}'">
+            Ver detalhes
+          </button>
+
+        </div>
+
+      </div>
+
     </div>
   `;
-
-  const card = col.querySelector(".card");
-
-  col.querySelector(".btn-details").addEventListener("click", () => {
-    window.location.href = `detalhes.html?id=${produto.id}`;
-});
-
-  col.querySelector(".btn-highlight").addEventListener("click", () => {
-    card.classList.toggle("border");
-    card.classList.toggle("border-danger");
-    card.classList.toggle("border-3");
-    card.classList.toggle("shadow-lg");
-  });
-
-  return col;
 }
 
 function renderProducts(produtos) {
+
   lista.innerHTML = "";
 
-  produtos.forEach(p => {
-    lista.appendChild(createProductCard(p));
-  });
-
-  const cards = document.querySelectorAll(".card");
-  cards.forEach(card => {
-    console.log("Card renderizado:", card);
+  produtos.forEach(produto => {
+    lista.innerHTML += createProductCard(produto);
   });
 }
 
 function renderCategories() {
+
   const categorias = ["Todas"];
 
   data.produtos.forEach(p => {
@@ -160,38 +194,32 @@ function renderCategories() {
   categorySelect.innerHTML = "";
 
   categorias.forEach(cat => {
-    const option = document.createElement("option");
-    option.value = cat;
-    option.textContent = cat;
-    categorySelect.appendChild(option);
+
+    categorySelect.innerHTML += `
+      <option value="${cat}">
+        ${cat}
+      </option>
+    `;
   });
 }
 
-function showProductDetails(produto) {
-  detalhes.innerHTML = `
-    <div class="card p-3">
-      <h2>${produto.nome}</h2>
-      <p><strong>Preço:</strong> ${formatPrice(produto.preco)}</p>
-      <p><strong>Categoria:</strong> ${produto.categoria}</p>
-      <p><strong>Estoque:</strong> ${produto.emEstoque ? "Em estoque" : "Sem estoque"}</p>
-      <p><strong>Descrição:</strong> ${produto.descricao}</p>
-    </div>
-  `;
-}
-
 function filterProducts() {
+
   const texto = searchInput.value.toLowerCase();
   const categoria = categorySelect.value;
 
-  return data.produtos.filter(p => {
-    return p.nome.toLowerCase().includes(texto) &&
-      (categoria === "Todas" || p.categoria === categoria);
+  return data.produtos.filter(produto => {
+
+    return produto.nome.toLowerCase().includes(texto) &&
+      (categoria === "Todas" ||
+        produto.categoria === categoria);
   });
 }
 
 // =======================
 // EVENTOS
 // =======================
+
 searchInput.addEventListener("input", () => {
   renderProducts(filterProducts());
 });
@@ -205,7 +233,9 @@ btnRender.addEventListener("click", () => {
 });
 
 // =======================
-// INICIALIZAÇÃO
+// INIT
 // =======================
+
 renderCategories();
 renderProducts(data.produtos);
+renderCarousel();
